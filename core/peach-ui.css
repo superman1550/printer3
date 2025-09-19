@@ -1,0 +1,316 @@
+body {
+    font-size: 13px;
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    margin: 0px;
+    padding: 0px;
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+    margin: 0px;
+    padding: 0px;
+}
+
+.flex-colspread {
+    flex: 1 1 auto;
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    height: 0;
+}
+
+.flex-colfixed {
+    flex: 0 0 auto;
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+.flex-rowspread {
+    flex: 1 1 auto;
+    overflow: auto;
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+.flex-rowfixed {
+    flex: 0 0 auto;
+    box-sizing: border-box;
+    overflow: auto;
+    margin: 0px;
+    padding: 0px;
+}
+
+.dialog {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    min-width: 240px;
+    min-height: 140px;
+    border: 1px solid #aaa;
+    box-shadow: 1px 1px 6px rgba(0, 0, 0, .3);
+    border-radius: none;
+    z-index: 10;
+}
+
+.dialog-mask {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: #4e4e4e73;
+}
+
+.dialog .dialog-header {
+    flex: 0 0 auto;
+    height: 32px;
+    background-color: #fff;
+
+    display: flex;
+    flex-direction: row;
+}
+
+.dialog .dialog-title {
+    flex: 1 1 auto;
+    cursor: move;
+    display: flex;
+    align-items: center;
+    padding: 0px 10px;
+}
+
+
+.dialog .dialog-icon {
+    flex: 0 0 auto;
+    width: 32px;
+    height: 32px;
+}
+
+.dialog .dialog-icon:hover {
+    background-color: #f87f7f;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.dialog .dialog-body {
+    flex: 1 1 auto;
+    height: 26px;
+    background-color: #fff;
+}
+
+.dialog .dialog-footer {
+    flex: 0 0 auto;
+    height: 40px;
+    background-color: #f0f0f0;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    padding: 8px 10px;
+    box-sizing: border-box;
+}
+
+
+.dialog .footer-btn {
+    margin: 0 4px;
+    min-width: 50px;
+    font-size: 12px;
+}
+
+.pop {
+    border: 1px solid #c5c5c5;
+    background-color: #fff;
+}
+
+.pop .pop-item {
+    min-width: 100px;
+    display: flex;
+    height: 26px;
+}
+
+.pop .pop-item:hover {
+    background-color: #4a6cf7;
+    color: #fff;
+    cursor: pointer;
+}
+
+.pop .pop-spe .pop-icon,
+.pop .pop-item .pop-icon {
+    width: 24px;
+    text-align: center;
+    background-color: #b5b4c583;
+    flex: 0 0 auto;
+}
+
+.pop .pop-spe .pop-label {
+    border-bottom: 1px solid #b5b4c583;
+}
+
+.pop .pop-item .pop-label {
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    flex: 1 1 auto;
+}
+
+.pop .pop-item .pop-number {
+    flex: 1 1 auto;
+    width: 50px;
+    text-align: right;
+    outline: none;
+    margin-right: 10px;
+}
+
+.tab .title {
+    height: 30px;
+}
+
+.tab .title .title-span {
+    display: flex;
+    font-size: 12px;
+    font-weight: 700;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    cursor: pointer;
+    border: 1px solid #d1d1d1;
+}
+
+.tab .title .title-span.selected {
+    background-color: #727272 !important;
+    color: #fff !important;
+}
+
+.datalist {
+    overflow-y: scroll;
+    border: 1px solid #aaa;
+}
+
+.datalist .datalist-option {
+    line-height: 24px;
+    padding: 0 4px;
+    cursor: pointer;
+    margin: 1px 0;
+}
+
+.datalist .datalist-selected,
+.datalist .datalist-option:hover {
+    background-color: #4a6cf7;
+    color: #fff;
+}
+
+
+.form-container {
+    padding: 10px;
+}
+
+.form-layout {
+    display: flex;
+    padding: 10px;
+    box-sizing: border-box;
+    flex-direction: column;
+}
+
+.form-layout-item {
+    display: flex;
+    flex-direction: row;
+    margin: 6px 0px;
+    min-height: 26px;
+}
+
+.form-layout .form-label {
+    min-width: 50px;
+    height: 26px;
+    margin-right: 10px;
+    flex: 0 0 auto;
+    text-align: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-layout .form-number,
+.form-layout .form-input {
+    min-width: 90px;
+    height: 26px;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.form-layout .form-select {
+    min-width: 100px;
+    height: 26px;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.form-layout .form-checkbox {
+    min-width: 16px;
+    min-height: 16px;
+}
+
+.form-layout .form-number {
+    text-align: right;
+}
+
+.form-layout .form-button {
+    margin-right: 10px;
+}
+
+.form-layout .form-icon {
+    min-width: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #707070;
+    box-sizing: border-box;
+}
+
+.form-layout .form-iconbutton {
+    min-width: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #707070;
+    box-sizing: border-box;
+}
+
+.form-layout .form-iconbutton:hover {
+    background-color: #4a6cf7;
+    color: #fff;
+    cursor: pointer;
+}
+
+.form-layout .form-fieldset {
+    border: 1px solid #8a8a8a;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+.form-layout .form-textarea {
+    box-sizing: border-box;
+    outline: none;
+    resize: none;
+}
+
+.form-layout .form-input-label {
+    display: flex;
+    text-align: left;
+    align-items: center;
+    padding: 0 4px;
+    margin-right: 10px;
+}
+
+.msg-conetnt {
+    padding: 10px;
+}
