@@ -1,39 +1,109 @@
 # Peach-Printer3.0
 
 #### 介绍
-{**以下是 Gitee 平台说明，您可以替换此简介**
-Gitee 是 OSCHINA 推出的基于 Git 的代码托管平台（同时支持 SVN）。专为开发者提供稳定、高效、安全的云端软件开发协作平台
-无论是个人、团队、或是企业，都能够用 Gitee 实现代码托管、项目管理、协作开发。企业项目请看 [https://gitee.com/enterprises](https://gitee.com/enterprises)}
+Peach-Peacher3.0是在V2生产过程中针对V2版本一些短板开发的一套全新报表打印工具，可以免安装客户端插件打印(需预览后打印)，也可以安装3.0客户端进行静默打印，3.0突出的特点是采用了Excel风格的设计器分隔，可以灵活设计表格内容，合并拆分单元格更方便，复杂的报表亦可快速生成。
 
 #### 软件架构
-软件架构说明
+
 
 
 #### 安装教程
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
+- printer-designer3.rar是设计器静态html代码，需要集成到业务系统的可以使用iframe等方式加入
+- peach-jprinter-min.js是打印模版必须得js文件，必须引入业务系统，打印时调用全局方法
+   打印方式如下：
+		
+		```
+		/*************************************************
+		* 设置局域网打印后台服务
+		* 说明：如果需要连接局域网内其他电脑运行的打印控件则需调用该方法
+		************************************************* */
+		PeachPrinter.setService("ws://192.168.0.141:9623/ws")
+		
+		/*************************************************
+		* 报表预览
+		* 说明：预览无需安装客户端插件，使用浏览器自带打印
+		* 参数：
+		*  template：报表模版JSON对象
+		*  maindata：主表数据（json对象，表头和表尾数据）
+		*  listdata：列表数据（json对象集合，表体数据）
+		************************************************* */
+		PeachPrinter.preview(template, maindata, listdata)
+		
+		
+		/*************************************************
+		* 报表静默打印
+		* 说明：需安装客户端插件，使用后台插件打印
+		* 参数：
+		*  template：报表模版JSON对象
+		*  maindata：主表数据（json对象，表头和表尾数据）
+		*  listdata：列表数据（json对象集合，表体数据）
+		*  licence：注册码
+		************************************************* */
+		const licence = {
+			code: "注册码",
+			name: "注册名",
+		}
+		PeachPrinter.print(template, maindata, listdata, licence, (result) => {
+			//打印完成回调
+			console.info(result)
+		})
+		
+		/*************************************************
+		* 报表静默转PDF服务
+		* 说明：需安装客户端插件，使用后台插件打印
+		* 参数：
+		*  template：报表模版JSON对象
+		*  maindata：主表数据（json对象，表头和表尾数据）
+		*  listdata：列表数据（json对象集合，表体数据）
+		*  licence：注册码
+		************************************************* */
+		const licence = {
+			code: "注册码",
+			name: "注册名",
+		}
+		PeachPrinter.savePdf(template, maindata, listdata, licence, (result) => {
+			//打印完成回调，result为json对象字符串（包含生成的PDF本地路径）
+			console.info(result)
+		})
+		```
+- PeachPrinter Setup 3.0.1.exe 是静默打印客户端安装程序，
+   支持Win7以及以上操作系统。
+   该客户默认监听9623端口，并支持接收局域网打印请求。
+   静默转PDF服务默认地址为用户临时文件夹，可在客户端软件设置修改
+   渲染模式分为：高效模式和并发模式，根据不同场景选择模式
 
 #### 使用说明
+	V2版本和V3版本的功能对比
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+	V2  优点：1、客户端基于.Net2.0平台最低能兼容windowXp操作系统，程序体积小，渲染速度快，大批量打印也能快速响应。
+			  2、基于HTTP请求，调用方便，在Web系统中无需引入JS文件，实现方法多种多样。
+			  3、支持个性化定制各种对接服务。
+	    缺点：模版设计表格相对简单
+		
+	V3  优点: 1、模版设界面使用了Excel风格的模式，上手简单。
+			  2、支持多种样式的表格实现
+			  3、客户端基于Electron框架，支持Window(Win7以上)、Linux、MacOS。
+			  4、Web业务系统引入JS文件，调用简单，使用WebSocklet调用客户端，无跨域问题。
+		缺点：打印渲染基于chrome浏览器内核Chromium，渲染速度相对V2.0慢，Web集成需要引入JS文件。
+	
+	备注：V2(需引入JS文件)和V3都支持浏览预览打印无需注册码
+
+#### 软件特点
+- Excel风格的设计界面
+- 可无需安装客户端也能打印
+- 表格单元格合并拆分更随心所欲
+- 所见即所得，设计器和打印效果完美一致
+- 入门门槛底，非软件开发人员亦可快速上手
 
 #### 参与贡献
 
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
 
 
 #### 特技
 
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+1.  在线编辑器：[peach-printer3.netlify.app](https://peach-printer3.netlify.app/)
+2.  官方网站 [jpeach.cn](https://jpeach.cn)
+3.  QQ交流群：812982456  
+4.  QQ售前咨询：1050147920
+
+
