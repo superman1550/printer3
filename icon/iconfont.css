@@ -1,11 +1,11 @@
 @font-face {
   font-family: "layui-icon"; /* Project id 4836166 */
-  src: url('iconfont.eot?t=1755501990661'); /* IE9 */
-  src: url('iconfont.eot?t=1755501990661#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('iconfont.woff2?t=1755501990661') format('woff2'),
-       url('iconfont.woff?t=1755501990661') format('woff'),
-       url('iconfont.ttf?t=1755501990661') format('truetype'),
-       url('iconfont.svg?t=1755501990661#layui-icon') format('svg');
+  src: url('iconfont.eot?t=1758333429994'); /* IE9 */
+  src: url('iconfont.eot?t=1758333429994#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('iconfont.woff2?t=1758333429994') format('woff2'),
+       url('iconfont.woff?t=1758333429994') format('woff'),
+       url('iconfont.ttf?t=1758333429994') format('truetype'),
+       url('iconfont.svg?t=1758333429994#layui-icon') format('svg');
 }
 
 .layui-icon {
@@ -16,20 +16,104 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.layui-icon-manual:before {
+  content: "\e612";
+}
+
+.layui-icon-site:before {
+  content: "\e627";
+}
+
+.layui-icon-folder2:before {
+  content: "\e869";
+}
+
+.layui-icon-commit:before {
+  content: "\e6a0";
+}
+
+.layui-icon-find:before {
+  content: "\e65d";
+}
+
+.layui-icon-opinion:before {
+  content: "\e7be";
+}
+
+.layui-icon-calendar:before {
+  content: "\e652";
+}
+
+.layui-icon-watermark:before {
+  content: "\e81e";
+}
+
+.layui-icon-add:before {
+  content: "\e6e0";
+}
+
+.layui-icon-remove:before {
+  content: "\e712";
+}
+
+.layui-icon-strikethrough1:before {
+  content: "\e821";
+}
+
+.layui-icon-strikethrough:before {
+  content: "\e669";
+}
+
+.layui-icon-underline:before {
+  content: "\e80c";
+}
+
+.layui-icon-italic:before {
+  content: "\e651";
+}
+
+.layui-icon-scale:before {
+  content: "\e61a";
+}
+
+.layui-icon-full:before {
+  content: "\e608";
+}
+
+.layui-icon-full-exit:before {
+  content: "\e639";
+}
+
+.layui-icon-file:before {
+  content: "\e650";
+}
+
+.layui-icon-save:before {
+  content: "\e64d";
+}
+
+.layui-icon-divider:before {
+  content: "\e621";
+}
+
+.layui-icon-code:before {
+  content: "\e61e";
+}
+
+.layui-icon-outline2:before {
+  content: "\e862";
+}
+
+.layui-icon-signature3:before {
+  content: "\e677";
+}
+
 .layui-icon-feedback2:before {
   content: "\e64c";
 }
 
-.layui-icon-opinion:before {
-  content: "\e612";
-}
-
 .layui-icon-feedback:before {
   content: "\e6be";
-}
-
-.layui-icon-folder2:before {
-  content: "\ecb7";
 }
 
 .layui-icon-template:before {
@@ -134,10 +218,6 @@
 
 .layui-icon-cancel:before {
   content: "\e648";
-}
-
-.layui-icon-commit:before {
-  content: "\e646";
 }
 
 .layui-icon-history:before {
@@ -332,10 +412,6 @@
   content: "\e67e";
 }
 
-.layui-icon-file:before {
-  content: "\e61a";
-}
-
 .layui-icon-folder:before {
   content: "\eabd";
 }
@@ -417,15 +493,11 @@
 }
 
 .layui-icon-form:before {
-  content: "\e605";
+  content: "\e6ff";
 }
 
 .layui-icon-page-num:before {
   content: "\e69a";
-}
-
-.layui-icon-watermark:before {
-  content: "\e81d";
 }
 
 .layui-icon-tooth:before {
@@ -460,10 +532,6 @@
   content: "\e622";
 }
 
-.layui-icon-save:before {
-  content: "\e608";
-}
-
 .layui-icon-line-spacing:before {
   content: "\e640";
 }
@@ -492,10 +560,6 @@
   content: "\e63d";
 }
 
-.layui-icon-divider:before {
-  content: "\e7b6";
-}
-
 .layui-icon-delete:before {
   content: "\e66d";
 }
@@ -504,7 +568,7 @@
   content: "\ecae";
 }
 
-.layui-icon-calendar:before {
+.layui-icon-calendar-old:before {
   content: "\e64e";
 }
 
@@ -514,18 +578,6 @@
 
 .layui-icon-printer:before {
   content: "\e659";
-}
-
-.layui-icon-find:before {
-  content: "\e65d";
-}
-
-.layui-icon-remove:before {
-  content: "\e65b";
-}
-
-.layui-icon-add:before {
-  content: "\e664";
 }
 
 .layui-icon-color:before {
@@ -540,28 +592,12 @@
   content: "\e6a9";
 }
 
-.layui-icon-code:before {
-  content: "\e639";
-}
-
 .layui-icon-barcode:before {
   content: "\e613";
 }
 
 .layui-icon-align-dispersed:before {
   content: "\e719";
-}
-
-.layui-icon-scale:before {
-  content: "\ea68";
-}
-
-.layui-icon-full-exit:before {
-  content: "\e705";
-}
-
-.layui-icon-full:before {
-  content: "\e6e3";
 }
 
 .layui-icon-undo:before {
@@ -574,18 +610,6 @@
 
 .layui-icon-bold:before {
   content: "\e626";
-}
-
-.layui-icon-italic:before {
-  content: "\e627";
-}
-
-.layui-icon-strikethrough:before {
-  content: "\e628";
-}
-
-.layui-icon-underline:before {
-  content: "\e629";
 }
 
 .layui-icon-align-both:before {
