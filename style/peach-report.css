@@ -1,0 +1,130 @@
+html,
+body {
+    padding: 0px;
+    margin: 0px;
+    width: 100vw;
+    height: 100vh;
+    font-size: 12px;
+    color: #474747;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.report-mask {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100vw;
+    height: 100vh;
+    background-color: #afafaf5e;
+    display: none;
+    z-index: 9;
+}
+
+.report-mask .center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #474747;
+    width: 120px;
+    height: 30px;
+    padding: 10px;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    box-shadow: 0 0 15px 5px #85848480;
+}
+
+.report-mask .center .icon {
+    flex: 0 0 auto;
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    border-top: 4px solid #525252;
+    border-right: 4px solid #525252;
+    border-bottom: 4px solid #525252;
+    border-left: 4px solid transparent;
+    box-sizing: border-box;
+    transform-origin: center center;
+    transition: transform 0.3s ease;
+}
+
+.report-mask .center .label {
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.report-menu {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: row;
+    background-color: #e0e0e0;
+}
+
+.report-menu .menu-button {
+    padding: 10px;
+    cursor: pointer;
+    border-right: 1px solid #c4c4c4;
+}
+
+.report-menu .menu-button:hover {
+    background: #5998e6;
+    color: #fff;
+
+}
+
+.report-menu .menu-select {
+    outline: none;
+    text-align: center;
+    padding: 0px 10px;
+}
+
+.report-content {
+    flex: 1 1 auto;
+    background: #969595;
+    overflow: scroll;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.report-content .page {
+    background: #fff;
+    margin: 1px auto;
+    flex: 0 0 auto;
+}
+
+.report-task {
+    flex: 0 0 auto;
+    background-color: #e0e0e0;
+    display: flex;
+    flex-direction: row;
+}
+
+.report-task .flexd-label {
+    flex: 0 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 10px;
+    border-right: 1px solid #c4c4c4;
+}
+
+.report-task .spread-label {
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 10px;
+    border-right: 1px solid #c4c4c4;
+    white-space: nowrap;
+    overflow: hidden;
+}

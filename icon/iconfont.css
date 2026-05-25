@@ -1,11 +1,11 @@
 @font-face {
   font-family: "layui-icon"; /* Project id 4836166 */
-  src: url('iconfont.eot?t=1758333429994'); /* IE9 */
-  src: url('iconfont.eot?t=1758333429994#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('iconfont.woff2?t=1758333429994') format('woff2'),
-       url('iconfont.woff?t=1758333429994') format('woff'),
-       url('iconfont.ttf?t=1758333429994') format('truetype'),
-       url('iconfont.svg?t=1758333429994#layui-icon') format('svg');
+  src: url('iconfont.eot?t=1769505675980'); /* IE9 */
+  src: url('iconfont.eot?t=1769505675980#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('iconfont.woff2?t=1769505675980') format('woff2'),
+       url('iconfont.woff?t=1769505675980') format('woff'),
+       url('iconfont.ttf?t=1769505675980') format('truetype'),
+       url('iconfont.svg?t=1769505675980#layui-icon') format('svg');
 }
 
 .layui-icon {
@@ -14,6 +14,34 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.layui-icon-checkbox-0:before {
+  content: "\e8b5";
+}
+
+.layui-icon-checkbox-1:before {
+  content: "\e8b6";
+}
+
+.layui-icon-loading:before {
+  content: "\e628";
+}
+
+.layui-icon-preview2:before {
+  content: "\e646";
+}
+
+.layui-icon-example:before {
+  content: "\e7cd";
+}
+
+.layui-icon-auto-height:before {
+  content: "\e75e";
+}
+
+.layui-icon-outline:before {
+  content: "\e6bf";
 }
 
 .layui-icon-manual:before {
@@ -422,10 +450,6 @@
 
 .layui-icon-close:before {
   content: "\e615";
-}
-
-.layui-icon-outline:before {
-  content: "\e601";
 }
 
 .layui-icon-down:before {

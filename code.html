@@ -1,0 +1,405 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>一维码二维码生成工具</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="Keywords" content="一维码,二维码,生成工具" />
+    <meta name="Description" content="一维码二维码示例,支持各种格式的一维码二维码。" />
+    <link rel="shortcut icon" href="logo.png">
+    <script src="./core/peach-codedemo-min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .title {
+            background: linear-gradient(135deg, #1772f6 0%, #0a56c9 100%);
+            color: #fff;
+            padding: 0px 20px;
+            font-size: 1.5rem;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0  70px;
+            padding: 0 1rem;
+        }
+
+        .main-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .canvas-panel {
+            flex: 1;
+            min-width: 300px;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .canvas-panel:hover {
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+        }
+
+        #canvas {
+            max-width: 100%;
+            height: auto;
+            border: 1px dashed #ddd;
+            padding: 1rem;
+            background-color: #fafafa;
+            border-radius: 6px;
+        }
+
+        .download-link {
+            margin-top: 1.5rem;
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #36b37e;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .download-link:hover {
+            background-color: #2d8f68;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(54, 179, 126, 0.2);
+        }
+
+        .download-link:active {
+            transform: translateY(0);
+        }
+
+        .control-panel {
+            flex: 1;
+            min-width: 300px;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .control-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0.8rem 1rem;
+        }
+
+        .table-lable {
+            text-align: right;
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 8px 12px;
+            color: #555;
+            vertical-align: middle;
+        }
+
+        select,
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            transition: border-color 0.2s ease;
+        }
+
+        select:focus,
+        input[type="text"]:focus,
+        input[type="number"]:focus {
+            outline: none;
+            border-color: #1772f6;
+            box-shadow: 0 0 0 3px rgba(23, 114, 246, 0.1);
+        }
+
+        input[type="number"] {
+            width: 70px;
+        }
+
+        .rotate-options {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .rotate-option {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+        }
+
+        .rotate-option:hover {
+            background-color: #f0f5ff;
+        }
+
+        .rotate-option input {
+            cursor: pointer;
+        }
+
+        button {
+            width: 100%;
+            height: 40px;
+            background-color: #1772f6;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-top: 0.5rem;
+        }
+
+        button:hover {
+            background-color: #0a56c9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(23, 114, 246, 0.2);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .scale-inputs {
+            display: flex;
+            gap: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+
+            .table-lable {
+                text-align: left;
+                display: block;
+                width: 100%;
+            }
+
+            .control-table tr {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .rotate-options {
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="title">
+        <h1>Peach 条码二维码生成工具</h1>
+    </div>
+    <div class="container">
+        <div class="main-content">
+            <div class="canvas-panel">
+                <canvas id="canvas"></canvas>
+                <a href="#" id="downloadImage" class="download-link">下载图片</a>
+            </div>
+            <div class="control-panel">
+                <table class="control-table">
+                    <tr>
+                        <td class="table-lable">
+                            类型:
+                        </td>
+                        <td>
+                            <select id="symbol"></select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="table-lable">
+                            内容:
+                        </td>
+                        <td>
+                            <input type="text" id="symtext" spellcheck="false">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="table-lable">
+                            显示字符:
+                        </td>
+                        <td><input type="text" id="symaltx" spellcheck="false"></td>
+                    </tr>
+                    <tr>
+                        <td class="table-lable">
+                            选项:
+                        </td>
+                        <td><input type="text" id="symopts" spellcheck="false"></td>
+                    </tr>
+                    <tr>
+                        <td class="table-lable">
+                            尺寸:
+                        </td>
+                        <td class="scale-inputs">
+                            <input type="number" min=1 max=9 step=1 id="scaleX" value=2>
+                            <input type="number" min=1 max=9 step=1 id="scaleY" value=2>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="table-lable">
+                            旋转:
+                        </td>
+                        <td class="rotate-options">
+                            <label class="rotate-option" for="rotateN">
+                                <input type="radio" name="rotate" value="N" id="rotateN" checked>Normal
+                            </label>
+                            <label class="rotate-option" for="rotateR">
+                                <input type="radio" name="rotate" value="R" id="rotateR">Right
+                            </label>
+                            <label class="rotate-option" for="rotateL">
+                                <input type="radio" name="rotate" value="L" id="rotateL">Left
+                            </label>
+                            <label class="rotate-option" for="rotateI">
+                                <input type="radio" name="rotate" value="I" id="rotateI">Invert
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: center;">
+                            <button id="render">生成</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script>
+        window.onload = () => {
+            const symbol = document.getElementById("symbol")
+            const render = document.getElementById("render")
+            const downloadLink = document.getElementById("downloadImage")
+            const symdesc = PeachCodeCVS.symdesc()
+
+            var opts = [];
+            for (var id in symdesc) {
+                opts.push(symdesc[id]);
+            }
+
+            opts.sort((a, b) => { return a.desc < b.desc ? -1 : 1 });
+
+            for (let i = 0, l = opts.length; i < l; i++) {
+                var elt = document.createElement('option');
+                elt.textContent = opts[i].desc;
+                elt.value = opts[i].sym;
+                symbol.appendChild(elt);
+            }
+
+            // 下载图片功能
+            downloadLink.addEventListener('click', function (e) {
+                e.preventDefault();
+                const canvas = document.getElementById('canvas');
+                // 检查canvas是否有内容
+                if (canvas.width > 0 && canvas.height > 0) {
+                    // 将canvas转换为图片URL
+                    const dataURL = canvas.toDataURL('image/png');
+                    // 上面这个是创建一个blob的对象连链接，
+                    const link = document.createElement('a')
+                    // 创建一个链接元素，是属于 a 标签的链接元素，所以括号里才是a，
+                    link.href = dataURL;
+                    // 把上面获得的blob的对象链接赋值给新创建的这个 a 链接
+                    link.setAttribute('download', "code.png")
+                    // 设置下载的属性（所以使用的是download），这个是a 标签的一个属性
+                    // 后面的是文件名字，可以更改
+                    link.click();
+                } else {
+                    alert('请先生成条码/二维码再下载');
+                }
+            });
+
+            symbol.addEventListener("change", () => {
+                const desc = symdesc[symbol.value];
+                if (desc) {
+                    document.getElementById('symtext').value = desc.text;
+                    document.getElementById('symopts').value = desc.opts;
+                } else {
+                    document.getElementById('symtext').value = '';
+                    document.getElementById('symopts').value = '';
+                }
+                document.getElementById('symaltx').value = '';
+            })
+
+            render.addEventListener("click", () => {
+                const elt = symdesc[symbol.value];
+                const text = document.getElementById('symtext').value.trim();
+                const alttext = document.getElementById('symaltx').value.trim();
+                const options = document.getElementById('symopts').value.trim();
+                const rotate = document.querySelector('input[name="rotate"]:checked').value;
+                const scaleX = document.getElementById('scaleX').value || 2;
+                const scaleY = document.getElementById('scaleY').value || 2;
+
+                // Convert the options to an object.
+                let opts = {};
+                let aopts = options.split(' ');
+                for (let i = 0; i < aopts.length; i++) {
+                    if (!aopts[i]) {
+                        continue;
+                    }
+                    var eq = aopts[i].indexOf('=');
+                    if (eq == -1) {
+                        // !name => false
+                        // name => true
+                        if (aopts[i][0] == '!') {
+                            opts[aopts[i].substr(1)] = false;
+                        } else {
+                            opts[aopts[i]] = true;
+                        }
+                    } else {
+                        opts[aopts[i].substr(0, eq)] = aopts[i].substr(eq + 1);
+                    }
+                }
+
+                opts.text = text;
+                opts.bcid = elt.sym;
+                opts.scaleX = scaleX;
+                opts.scaleY = scaleY;
+                opts.rotate = rotate;
+                if (alttext) {
+                    opts.alttext = alttext;
+                }
+                const canvas = document.getElementById('canvas');
+                PeachCodeCVS.toCanvas(canvas, opts);
+            })
+
+
+            symbol.selectedIndex = 0;
+            const evt = document.createEvent("HTMLEvents");
+            evt.initEvent("change", false, true);
+            symbol.dispatchEvent(evt);
+        }
+    </script>
+</body>
+
+</html>

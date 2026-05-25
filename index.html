@@ -3,66 +3,161 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Peach-Printer 表格编辑器 3.0</title>
+    <title>Peach-Printer 模版编辑器 3.0</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="Keywords" content="web打印,peach-printer,前端自动分页打印" />
     <meta name="Description" content="Peach-Printer是一款优秀的Web打印解决方案，支持无需预览直接打印、表格分页汇总、调用简单，兼容主流浏览器及IE。" />
     <link rel="shortcut icon" href="logo.png">
-    <link rel="stylesheet" href="core/peach-ui.css">
-    <link rel="stylesheet" href="core/peach-designer.css">
-    <link rel="stylesheet" href="icon/iconfont.css">
-    <script src="core/peach-designer-min.js"></script>
-    <script src="core/peach-jprinter-min.js"></script>
+    <link rel="stylesheet" href="style/peach-style.css?v=20251212">
+    <link rel="stylesheet" href="style/peach-theme.css?v=20251212">
+    <link rel="stylesheet" href="icon/iconfont.css?v=20251212">
+    <!--设计器核心-->
+    <script src="core/peach-designer-min.js?v=20260313"></script>
+    <!--打印相关-->
+    <script src="core/peach-jprinter-min.js?v=20260313"></script>
+    <!--1D 2D code扩展-->
+    <script src="core/peach-codedemo-min.js?v=20260313"></script>
 </head>
 
 <body class="flex-col">
     <script>
-        const opt = {
-            saveAction: function (data) {
-                console.log("保存数据", JSON.stringify(data))
-                //这里可以将data发送到服务器保存
+        const templateList = [{
+                text: "普通检验报告",
+                value: {
+                    template: "data/template1.json",
+                    datasource: "data/data1.json",
+                }
+            },
+            {
+                text: "分栏检验报告",
+                value: {
+                    template: "data/template2.json",
+                    datasource: "data/data2.json",
+                }
+            },
+            {
+                text: "综合检验报告",
+                value: {
+                    template: "data/template3.json",
+                    datasource: "data/data3.json",
+                }
+            },
+            {
+                text: "物流出库单",
+                value: {
+                    template: "data/template4.json",
+                    datasource: "data/data4.json",
+                }
+            },
+        ]
+        //设计器系统参数
+        const config = {
+            //是否显示示例，生产环境设置为:false
+            showExample: true,
+            exampleList: templateList, //示例模版
+            //设计器菜单保存按钮调用方法,这里可以将data发送到服务器保存
+            saveAction: function (template, maindata, listdata) {
+                console.log("保存数据", JSON.stringify(template))
+                console.log("保存数据", JSON.stringify(maindata))
+                console.log("保存数据", JSON.stringify(listdata))
                 alert("此处回调保存代码")
             },
+            //设计器菜单预览打印按钮调用方法
             previewAction: function (template, maindata, listdata) {
-                //设计器打印回调
                 PeachPrinter.preview(template, maindata, listdata)
+                // const array = []
+                // for (let index = 0; index < 9; index++) {
+                //     array.push({
+                //         maindata,
+                //         listdata
+                //     })
+                // }
+                // PeachPrinter.previewList(template, array)
             },
+            //设计器菜单静默打印按钮调用方法
             printAction: function (template, maindata, listdata) {
                 //设计器打印回调
                 const licence = {
-                    code: "注册码",
-                    name: "注册名",
+                    code: "",
+                    name: "",
                 };
                 //使用局域网打印机服务
-                //PeachPrinter.setService("ws://192.168.0.141:9623/ws")
+                // PeachPrinter.setService("ws://192.168.0.141:9623/ws")
+                //调用客户端静默打印
                 PeachPrinter.print(template, maindata, listdata, licence, (result) => {
                     console.info(result)
                 })
+                //调用客户端批量静默打印
+                // const array = []
+                // for (let index = 0; index < 900; index++) {
+                //     array.push({
+                //         maindata,
+                //         listdata
+                //     })
+                // }
+                // PeachPrinter.printList(template, array, licence, (result) => {
+                //     console.info(result)
+                // })
+                //调用客户端转成PDF保存至本地返回路径
                 // PeachPrinter.savePdf(template, maindata, listdata, licence, (result) => {
                 //     console.info(result)
                 // })
-                // (async () => {
-                //     const htmlstr = await loadHtmlData("data/table.html")
-                //     PeachPrinter.previeHtml(htmlstr, {
-                //         marginBottom: 10,
-                //         pageNumber: {
-                //             position: "top-right",
-                //             content: "{PageNO}/{PageCount}",
-                //             size: 14
-                //         }
-                //     }, licence)
-                // })();
-            }
+                // 获取系统打印机列表
+                // PeachPrinter.getPrinters((list) => {
+                //     console.info(list)
+                // })
+            },
+            //报表显示
+            reportAction: function (paged, template, maindata, listdata) {
+                // 定义窗口特性参数
+                const windowFeatures = [
+                    'menubar=no', // 隐藏菜单栏
+                    'toolbar=no', // 隐藏工具栏（前进/后退等）
+                    'location=no', // 尝试隐藏地址栏（现代浏览器大多不生效）
+                    'status=no', // 隐藏状态栏
+                    'resizable=yes', // 允许调整窗口大小（建议保留，提升用户体验）
+                    'scrollbars=yes' // 显示滚动条（建议保留，避免内容被截断）
+                ].join(',');
+
+                //demo为新打开页签,生产系统可使用iframe集成页面
+                const newWindow = window.open('report.html', 'customWindow', windowFeatures);
+                const screenWidth = window.screen.availWidth;
+                const screenHeight = window.screen.availHeight;
+                newWindow.moveTo(0, 0);
+                newWindow.resizeTo(screenWidth, screenHeight);
+                newWindow.focus();
+                newWindow.onload = () => {
+                    const config = {
+                        service: '', //客户端服务地址(空则使用默认地址)
+                        licence: { //注册码信息
+                            name: "",
+                            code: "",
+                        },
+                        paged, //报表预览是否分页（true|false）
+                    }
+                    //设置报表显示参数
+                    newWindow.PeachReprot.report(config, template, maindata, listdata)
+                }
+            },
         }
         window.onload = async () => {
-            const datasource = await loadData("data/data1.json")
-            //加载文档
-            const template = await loadData("data/template1.json")
-            PeachDesigner.loadTemplate(opt, template, datasource.maindata, datasource.listdata);
+            const datasource = await loadData("data/data3.json")
+            const template = await loadData("data/template3.json")
+            /**
+             * 加载文档
+             *  config:参数
+             *  template：报表模版JSON对象
+             *  maindata：主表数据（json对象，表头和表尾数据）
+             *  listdata：列表数据（json对象集合，表体数据）
+             */
+
+            PeachDesigner.loadTemplate(config, template, datasource.maindata, datasource.listdata);
             //创建新文档
-            //PeachDesigner.newTemplate(opt,datasource.maindata, datasource.listdata)
+            //PeachDesigner.newTemplate(config,datasource.maindata, datasource.listdata)
         }
+
+
 
         async function loadData(url) {
             const response = await fetch(url, {
@@ -76,16 +171,6 @@
             }
             // 解析JSON响应
             return await response.json();
-        }
-
-        async function loadHtmlData(url) {
-            const response = await fetch(url);
-            // 检查响应状态
-            if (!response.ok) {
-                throw new Error(`HTTP错误! 状态码: ${response.status}`);
-            }
-            // 解析JSON响应
-            return await response.text();
         }
     </script>
 </body>

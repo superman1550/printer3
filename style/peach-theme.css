@@ -1,0 +1,194 @@
+:root {
+    /**边框颜色*/
+    --border-color: #adadad;
+    /**深色背景颜色*/
+    --background-dark-color: #4a6cf7;
+    /**浅色背景颜色*/
+    --background-light-color: #dddddd;
+    /**白色背景颜色*/
+    --background-white-color: #ffffff;
+    /**深色背景字体颜色*/
+    --font-dark-color: #fff;
+    /**浅色背景字体颜色*/
+    --font-light-color: #000000;
+    /**白色背景字体颜色*/
+    --font-white-color: #000000;
+    /**菜单图标区域背景颜色*/
+    --background-menu-icon-color: #b5b4c583;
+    /**编辑区单元格选中背景颜色*/
+    --background-edit-select-color: #d9edfe;
+    /**编辑区单元格起始选中背景颜色*/
+    --background-edit-start-color: #b9d7f8;
+}
+
+/**弹窗配色*/
+.dialog {
+    border-color: var(--border-color);
+}
+
+.dialog>.dialog-header {
+    background-color: var(--background-white-color);
+}
+
+.dialog>.dialog-footer {
+    background-color: var(--background-white-color);
+}
+
+.dialog>.dialog-footer>.footer-btn {
+    background-color: var(--background-light-color);
+    border-color: var(--border-color);
+}
+
+.dialog>.dialog-footer>.footer-btn:hover {
+    background-color: var(--background-dark-color);
+    color: var(--font-dark-color);
+}
+
+
+/**右键菜单配色*/
+.pop>.pop-item:hover {
+    background-color: var(--background-dark-color);
+    color: var(--font-dark-color);
+}
+
+.pop>.pop-spe>.pop-icon,
+.pop>.pop-item>.pop-icon {
+    background-color: var(--background-menu-icon-color);
+}
+
+.pop>.pop-spe>.pop-label {
+    border-color: var(--background-menu-icon-color);
+}
+
+
+/**tab页签*/
+.tab>.title {
+    background-color: var(--background-white-color);
+    border-bottom-color: var(--border-color);
+}
+
+.tab>.title>.title-span {
+    border-color: var(--border-color);
+}
+
+.tab>.title>.title-span.selected {
+    background-color: var(--background-dark-color) !important;
+    color: var(--font-dark-color) !important;
+}
+
+/**datalist选项面板*/
+.datalist {
+    border-color: var(--border-color);
+}
+
+.datalist>.datalist-selected,
+.datalist>.datalist-option:hover {
+    background-color: var(--background-dark-color);
+    color: var(--font-dark-color);
+}
+
+
+/**下拉菜单、下拉选项*/
+.combobox.open>.combobox-options,
+.dorpdown.open>.dorpdown-options {
+    background-color: var(--background-white-color);
+    color: var(--font-white-color);
+    border-color: var(--border-color);
+}
+
+.dorpdown.open>.dorpdown-options>.dorpdown-option>.item-icon {
+    background-color: var(--background-menu-icon-color);
+}
+
+.dorpdown.open>.dorpdown-options>.dorpdown-option:hover,
+.combobox.open>.combobox-options>.combobox-option.selected,
+.combobox.open>.combobox-options>.combobox-option:hover {
+    background-color: var(--background-dark-color);
+    color: var(--font-dark-color);
+}
+
+/**表单布局内容*/
+.form-layout>.form-layout-item>.form-input-label,
+.form-layout>.form-layout-item>.form-label {
+    color: var(--font-light-color);
+}
+
+.form-layout>.form-layout-item>.form-textarea,
+.form-layout>.form-layout-item>.form-checkbox,
+.form-layout>.form-layout-item>.form-select,
+.form-layout>.form-layout-item>.form-number,
+.form-layout>.form-layout-item>.form-input {
+    color: var(--font-light-color);
+    border-color: var(--border-color);
+}
+
+.form-layout>.form-layout-item>.checkbox>.checkbox-icon {
+    color: #4a6cf7;
+}
+
+/**主页面内容*/
+.page-header,
+.page-header>.menu-panel,
+.page-func,
+.page-func>.func-form-panel,
+.page-footer,
+.page-footer>.status-label,
+.page-footer>.status-button {
+    border-color: var(--border-color);
+}
+
+.page-header,
+.page-func,
+.page-footer {
+    background-color: var(--background-light-color);
+}
+
+
+.page-header>.menu-panel>.menu-btn {
+    color: var(--font-light-color);
+}
+
+.page-header>.menu-panel>.menu-sep {
+    background-color: var(--background-menu-icon-color);
+}
+
+.page-header>.menu-panel>.menu-select,
+.page-header>.menu-panel>.menu-item {
+    border-color: var(--border-color);
+}
+
+.page-header>.menu-panel>.menu-item:hover,
+.page-header>.menu-panel>.menu-btn-selected,
+.page-header>.menu-panel>.menu-btn:hover,
+.page-header>.menu-panel>.menu-dorpdown:hover,
+.page-footer>.status-button:hover {
+    background-color: var(--background-dark-color);
+    color: var(--font-dark-color);
+}
+
+.page-body {
+    background-color: var(--background-white-color);
+}
+
+.page-body .table-ruler {
+    background-color: var(--background-light-color);
+    border-color: var(--border-color);
+}
+
+.page-body .drag-line {
+    border-color: var(--background-dark-color);
+}
+
+/**选中单元格*/
+.editor-table>.editor-tr>.editor-td.editor-td-selected {
+    background-color: var(--background-edit-select-color);
+}
+
+.editor-table>.editor-tr>.editor-td.editor-td-start {
+    background-color: var(--background-edit-start-color) !important;
+}
+
+.ruler-table>.ruler-tr>.ruler-td .ruler-left-delimiter:hover,
+.ruler-table>.ruler-tr>.ruler-td .ruler-top-delimiter:hover {
+    background-color: var(--background-dark-color);
+}

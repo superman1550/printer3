@@ -6,6 +6,55 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "1727414",
+      "name": "201checkbox-未选",
+      "font_class": "checkbox-0",
+      "unicode": "e8b5",
+      "unicode_decimal": 59573
+    },
+    {
+      "icon_id": "1727415",
+      "name": "201checkbox-选中",
+      "font_class": "checkbox-1",
+      "unicode": "e8b6",
+      "unicode_decimal": 59574
+    },
+    {
+      "icon_id": "13253782",
+      "name": "loading",
+      "font_class": "loading",
+      "unicode": "e628",
+      "unicode_decimal": 58920
+    },
+    {
+      "icon_id": "11741231",
+      "name": "预览",
+      "font_class": "preview2",
+      "unicode": "e646",
+      "unicode_decimal": 58950
+    },
+    {
+      "icon_id": "7621205",
+      "name": "example-d",
+      "font_class": "example",
+      "unicode": "e7cd",
+      "unicode_decimal": 59341
+    },
+    {
+      "icon_id": "17882624",
+      "name": "16_GJ_A_ncell__自适应行高",
+      "font_class": "auto-height",
+      "unicode": "e75e",
+      "unicode_decimal": 59230
+    },
+    {
+      "icon_id": "43241378",
+      "name": "论文大纲",
+      "font_class": "outline",
+      "unicode": "e6bf",
+      "unicode_decimal": 59071
+    },
+    {
       "icon_id": "9133967",
       "name": "操作手册",
       "font_class": "manual",
@@ -718,13 +767,6 @@
       "font_class": "close",
       "unicode": "e615",
       "unicode_decimal": 58901
-    },
-    {
-      "icon_id": "7603957",
-      "name": "大纲-01",
-      "font_class": "outline",
-      "unicode": "e601",
-      "unicode_decimal": 58881
     },
     {
       "icon_id": "8106224",
