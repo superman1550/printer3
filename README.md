@@ -99,11 +99,10 @@ Peach-Peacher3.0是在V2生产过程中针对V2版本一些短板开发的一套
 
 
 
-#### 特技
-
-1.  在线编辑器：[peach-printer3.netlify.app](https://peach-printer3.netlify.app/)
-2.  官方网站 [jpeach.cn](https://jpeach.cn)
-3.  QQ交流群：812982456  
-4.  QQ售前咨询：1050147920
+#### 关于我们
+ 
+1.  官方网站 [jpeach.cn](https://jpeach.cn)  [在线编辑器](https://jpeach.cn/printer3/index.html)
+2.  QQ交流群：812982456  
+3.  QQ售前咨询：1050147920
 
 
