@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="style/peach-style.css?v=20251212">
     <link rel="stylesheet" href="style/peach-theme.css?v=20251212">
     <link rel="stylesheet" href="icon/iconfont.css?v=20251212">
+    <!--国际化-->
+    <script src="core/peach-lang-min.js?v=20260313"></script>
     <!--设计器核心-->
     <script src="core/peach-designer-min.js?v=20260313"></script>
     <!--打印相关-->
@@ -90,7 +92,7 @@
                 })
                 //调用客户端批量静默打印
                 // const array = []
-                // for (let index = 0; index < 900; index++) {
+                // for (let index = 0; index < 10; index++) {
                 //     array.push({
                 //         maindata,
                 //         listdata
@@ -142,6 +144,7 @@
             },
         }
         window.onload = async () => {
+            //PeachLang.setLang("en") //支持zh-tw/en/jp 默认 zh-cn
             const datasource = await loadData("data/data3.json")
             const template = await loadData("data/template3.json")
             /**

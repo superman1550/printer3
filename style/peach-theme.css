@@ -111,8 +111,10 @@
 .form-layout>.form-layout-item>.form-input-label,
 .form-layout>.form-layout-item>.form-label {
     color: var(--font-light-color);
+    background-color: var(--background-light-color);
 }
 
+.form-layout>.form-layout-item>.form-button,
 .form-layout>.form-layout-item>.form-textarea,
 .form-layout>.form-layout-item>.form-checkbox,
 .form-layout>.form-layout-item>.form-select,
